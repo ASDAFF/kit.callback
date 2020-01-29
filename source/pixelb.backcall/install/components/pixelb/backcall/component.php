@@ -265,7 +265,7 @@ if($_REQUEST['pb_send_mode'] == 'pb_ajax_backcall') {
 	pb_backcall_form_init($arParams);
 
 	//echo bitrix_sessid_post('pb_bform_sessid');
-	echo 'input type="hidden" name="pb_bform_sessid" id="pb_bform_sessid" value="'.bitrix_sessid().'" />';
+	echo '<input type="hidden" name="pb_bform_sessid" id="pb_bform_sessid" value="'.bitrix_sessid().'" />';
 	$this->IncludeComponentTemplate();
 
 }
