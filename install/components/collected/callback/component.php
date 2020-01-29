@@ -28,7 +28,7 @@ if(empty($arParams['TRIGGER_LABEL'])){
 if($arParams['EMAIL_TO_IBLOCK'] > 0 && $arParams['EMAIL_TO_IBLOCK_PROPERTY'] && CModule::IncludeModule("iblock")) {
 
 	$cache = new CPHPCache();
-	$cache_path = 'pb_form_callback';
+	$cache_path = 'cxb_form_callback';
 	$cache_id = $cache_path.$arParams['FORM_ID'].md5(implode('',$arParams));
 	if ($arParams['EMAIL_TO_IBLOCK_CACHE_TIME'] > 0 && $cache->InitCache($arParams['EMAIL_TO_IBLOCK_CACHE_TIME'], $cache_id, $cache_path)){
 		$cache_res = $cache->GetVars();
@@ -90,9 +90,9 @@ if($arParams['EMAIL_TO_IBLOCK'] > 0 && $arParams['EMAIL_TO_IBLOCK_PROPERTY'] && 
 	}
 }
 
-if($_REQUEST['pb_send_mode'] == 'pb_ajax_callback') {
+if($_REQUEST['cxb_send_mode'] == 'cxb_ajax_callback') {
 
-	if($arParams['FORM_ID'] == $_REQUEST['pb_form_id']) {
+	if($arParams['FORM_ID'] == $_REQUEST['cxb_form_id']) {
 
 		$arParams['MESSAGE_MAX_STRLEN'] = intval($arParams['MESSAGE_MAX_STRLEN']);
 		if ($arParams['MESSAGE_MAX_STRLEN'] >= 0) {
@@ -119,9 +119,9 @@ if($_REQUEST['pb_send_mode'] == 'pb_ajax_callback') {
 		$arErrors = array();
 		$arFieldsErrors = array();
 
-		if($arParams['SHOW_FORM_RULES'] == 'Y' && $arParams['FORM_RULES_ADDRESS'] && empty($_REQUEST['pb_form_rules'])){
+		if($arParams['SHOW_FORM_RULES'] == 'Y' && $arParams['FORM_RULES_ADDRESS'] && empty($_REQUEST['cxb_form_rules'])){
 			$arErrors[] = GetMessage("ERROR_form_rules_REQUIRED");
-			$arFieldsErrors[] = 'pb_form_rules';
+			$arFieldsErrors[] = 'cxb_form_rules';
 		}
 
 		if ($arParams["USE_CAPTCHA"] == "Y") {
@@ -230,15 +230,15 @@ if($_REQUEST['pb_send_mode'] == 'pb_ajax_callback') {
 		}
 	}
 
-} elseif($_REQUEST['pb_send_mode'] == 'ajax_sessid') {
+} elseif($_REQUEST['cxb_send_mode'] == 'ajax_sessid') {
 
 	$APPLICATION->RestartBuffer();
 	echo bitrix_sessid_post();
 	die();
 
-} elseif($_REQUEST['pb_send_mode'] == 'pb_ajax_get_form') {
+} elseif($_REQUEST['cxb_send_mode'] == 'cxb_ajax_get_form') {
 
-	if($arParams['FORM_ID'] == $_REQUEST['pb_form_id']) {
+	if($arParams['FORM_ID'] == $_REQUEST['cxb_form_id']) {
 
 		$APPLICATION->RestartBuffer();
 
@@ -266,10 +266,10 @@ if($_REQUEST['pb_send_mode'] == 'pb_ajax_callback') {
 
 	include_once($_SERVER["DOCUMENT_ROOT"].'/bitrix/modules/collected.callback/include.php');
 
-	pb_callback_form_init($arParams);
+	cxb_callback_form_init($arParams);
 
-	//echo bitrix_sessid_post('pb_bform_sessid');
-	echo '<input type="hidden" name="pb_bform_sessid" id="pb_bform_sessid" value="'.bitrix_sessid().'" />';
+	//echo bitrix_sessid_post('cxb_bform_sessid');
+	echo '<input type="hidden" name="cxb_bform_sessid" id="cxb_bform_sessid" value="'.bitrix_sessid().'" />';
 	$this->IncludeComponentTemplate();
 
 }

@@ -3,7 +3,7 @@
  * Copyright (c) 30/1/2020 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
  */
 
-if($_REQUEST['pb_send_mode'] == 'pb_ajax_get_form'){//msg form?>
+if($_REQUEST['cxb_send_mode'] == 'cxb_ajax_get_form'){//msg form?>
 
 	<?$point_count = 1;?>
 
@@ -123,9 +123,9 @@ if($_REQUEST['pb_send_mode'] == 'pb_ajax_get_form'){//msg form?>
 
 
 							<?if($arParams['SHOW_FORM_RULES'] == 'Y' && $arParams['FORM_RULES_ADDRESS']){?>
-								<div class="pb_form_rules_wrapper">
+								<div class="cxb_form_rules_wrapper">
 									<label>
-										<input type="checkbox" class="pb_form_rules" name="pb_form_rules<?=$arParams['FORM_ID']?>"  value="1" checked="checked" />
+										<input type="checkbox" class="cxb_form_rules" name="cxb_form_rules<?=$arParams['FORM_ID']?>"  value="1" checked="checked" />
 									<?=GetMessage('CB_FORM_RULES_LABEL_1')?> <?=$arParams['TRIGGER_LABEL'] ? $arParams['TRIGGER_LABEL'] : GetMessage('PBMF_SERVICES_SUBMIT_LABEL')?> <?=GetMessage('CB_FORM_RULES_LABEL_2')?> <a target="_blank" href="<?=$arParams['FORM_RULES_ADDRESS']?>"><?=GetMessage('CB_FORM_RULES_LABEL_3')
 										?></a>
 									</label>
@@ -138,7 +138,7 @@ if($_REQUEST['pb_send_mode'] == 'pb_ajax_get_form'){//msg form?>
 
 
 
-					<input type="hidden" name="pb_form_id[]" class="pb_form_id" value="<?=$arParams['FORM_ID']?>" />
+					<input type="hidden" name="cxb_form_id[]" class="cxb_form_id" value="<?=$arParams['FORM_ID']?>" />
 
 				</div>
 			</div>
@@ -152,12 +152,12 @@ if($_REQUEST['pb_send_mode'] == 'pb_ajax_get_form'){//msg form?>
 
 	<?if($arParams['USE_ICON'] == 0){?>
 
-		<span class="form_v5_callback_element" id="pb_form_trigger_<?=$arParams['FORM_ID'];?>"><!-- parent required --><img class="first_img" src="<?=$templateFolder.'/img/top_phone_btn_v3_hover
-	.png'?>" alt="<?=$arParams['TRIGGER_LABEL']?>" /><img class="second_img" src="<?=$templateFolder.'/img/top_phone_btn_v3.png'?>" alt="<?=$arParams['TRIGGER_LABEL']?>"><span class="header_top_back_call_trigger"><?=$arParams['TRIGGER_LABEL']?></span><input type="hidden" name="pb_form_id[]" class="pb_form_id" value="<?=$arParams['FORM_ID']?>" /></span>
+		<span class="form_v5_callback_element" id="cxb_form_trigger_<?=$arParams['FORM_ID'];?>"><!-- parent required --><img class="first_img" src="<?=$templateFolder.'/img/top_phone_btn_v3_hover
+	.png'?>" alt="<?=$arParams['TRIGGER_LABEL']?>" /><img class="second_img" src="<?=$templateFolder.'/img/top_phone_btn_v3.png'?>" alt="<?=$arParams['TRIGGER_LABEL']?>"><span class="header_top_back_call_trigger"><?=$arParams['TRIGGER_LABEL']?></span><input type="hidden" name="cxb_form_id[]" class="cxb_form_id" value="<?=$arParams['FORM_ID']?>" /></span>
 
 	<?}else{?>
 
-		<span class="form_v5_callback_element" id="pb_form_trigger_<?=$arParams['FORM_ID'];?>"><!-- parent required --><img class="first_img" src="<?=$templateFolder.'/img/msg_btn_v3_hover.png'?>" alt="<?=$arParams['TRIGGER_LABEL']?>" /><img class="second_img" src="<?=$templateFolder.'/img/msg_btn_v3.png'?>" alt="<?=$arParams['TRIGGER_LABEL']?>"><span class="header_top_back_call_trigger"><?=$arParams['TRIGGER_LABEL']?></span><input type="hidden" name="pb_form_id[]" class="pb_form_id" value="<?=$arParams['FORM_ID']?>" /></span>
+		<span class="form_v5_callback_element" id="cxb_form_trigger_<?=$arParams['FORM_ID'];?>"><!-- parent required --><img class="first_img" src="<?=$templateFolder.'/img/msg_btn_v3_hover.png'?>" alt="<?=$arParams['TRIGGER_LABEL']?>" /><img class="second_img" src="<?=$templateFolder.'/img/msg_btn_v3.png'?>" alt="<?=$arParams['TRIGGER_LABEL']?>"><span class="header_top_back_call_trigger"><?=$arParams['TRIGGER_LABEL']?></span><input type="hidden" name="cxb_form_id[]" class="cxb_form_id" value="<?=$arParams['FORM_ID']?>" /></span>
 
 	<?}?>
 <?}?>
