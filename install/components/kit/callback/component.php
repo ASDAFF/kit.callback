@@ -264,7 +264,7 @@ if($_REQUEST['cxb_send_mode'] == 'cxb_ajax_callback') {
 		CJSCore::Init(array("jquery"));
 	}
 
-	include_once($_SERVER["DOCUMENT_ROOT"].'/bitrix/modules/collected.callback/include.php');
+	include_once($_SERVER["DOCUMENT_ROOT"].'/bitrix/modules/kit.callback/include.php');
 
 	cxb_callback_form_init($arParams);
 

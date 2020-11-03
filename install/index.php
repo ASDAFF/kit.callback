@@ -11,9 +11,9 @@ use \Bitrix\Main\Config\Option;
 
 Loc::loadMessages(__FILE__);
 
-class collected_callback extends CModule
+class kit_callback extends CModule
 {
-	var $MODULE_ID = "collected.callback";
+	var $MODULE_ID = "kit.callback";
     var $MODULE_NAME;
 
     public function __construct()
@@ -28,11 +28,11 @@ class collected_callback extends CModule
             $this->MODULE_VERSION_DATE = $arModuleVersion['VERSION_DATE'];
         }
 
-        $this->MODULE_ID = 'collected.callback';
-        $this->MODULE_NAME = Loc::getMessage('COLLECTED_CALLBACK_MODULE_NAME');
-        $this->MODULE_DESCRIPTION = Loc::getMessage('COLLECTED_CALLBACK_MODULE_DESCRIPTION');
+        $this->MODULE_ID = 'kit.callback';
+        $this->MODULE_NAME = Loc::getMessage('KIT_CALLBACK_MODULE_NAME');
+        $this->MODULE_DESCRIPTION = Loc::getMessage('KIT_CALLBACK_MODULE_DESCRIPTION');
         $this->MODULE_GROUP_RIGHTS = 'N';
-        $this->PARTNER_NAME = Loc::getMessage('COLLECTED_CALLBACK_MODULE_PARTNER_NAME');
+        $this->PARTNER_NAME = Loc::getMessage('KIT_CALLBACK_MODULE_PARTNER_NAME');
         $this->PARTNER_URI = 'https://asdaff.github.io/';
     }
 
@@ -43,7 +43,7 @@ class collected_callback extends CModule
         $this->InstallDB();
         $this->installFiles();
         $this->InstallMsg();
-		$APPLICATION->IncludeAdminFile(Loc::getMessage('COLLECTED_CALLBACK_MODULE_INSTALL') . $this->MODULE_ID, $DOCUMENT_ROOT."/bitrix/modules/".$this->MODULE_ID."/install/step.php");
+		$APPLICATION->IncludeAdminFile(Loc::getMessage('KIT_CALLBACK_MODULE_INSTALL') . $this->MODULE_ID, $DOCUMENT_ROOT."/bitrix/modules/".$this->MODULE_ID."/install/step.php");
     }
 
     public function DoUninstall()
@@ -53,22 +53,22 @@ class collected_callback extends CModule
         $this->UnInstallDB();
         $this->UnInstallMsg();
         ModuleManager::unRegisterModule($this->MODULE_ID);
-		$APPLICATION->IncludeAdminFile(Loc::getMessage('COLLECTED_CALLBACK_MODULE_UNINSTALL') . $this->MODULE_ID, $DOCUMENT_ROOT."/bitrix/modules/".$this->MODULE_ID."/install/unstep.php");
+		$APPLICATION->IncludeAdminFile(Loc::getMessage('KIT_CALLBACK_MODULE_UNINSTALL') . $this->MODULE_ID, $DOCUMENT_ROOT."/bitrix/modules/".$this->MODULE_ID."/install/unstep.php");
     }
 
     public function installFiles ()
 	{
-		CopyDirFiles($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/collected.callback/install/components", $_SERVER["DOCUMENT_ROOT"]."/bitrix/components", true, true);
+		CopyDirFiles($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/kit.callback/install/components", $_SERVER["DOCUMENT_ROOT"]."/bitrix/components", true, true);
 
 		return true;
 	}
 
     public function uninstallFiles ()
 	{
-		DeleteDirFilesEx("/bitrix/components/collected/callback");
+		DeleteDirFilesEx("/bitrix/components/kit/callback");
 
-		if(count(glob('/bitrix/components/collected/*', GLOB_ONLYDIR)) === 0) {
-			DeleteDirFilesEx("/bitrix/components/collected");
+		if(count(glob('/bitrix/components/kit/*', GLOB_ONLYDIR)) === 0) {
+			DeleteDirFilesEx("/bitrix/components/kit");
 		}
 
 		return true;
@@ -90,8 +90,8 @@ class collected_callback extends CModule
 		$arFields = array(
 			"LID"           => 'ru',
 			"EVENT_NAME"    => "CB_CALLBACK_FORM_EVENT",
-			"NAME"          => Loc::getMessage('COLLECTED_CALLBACK_MODULE_INSTALL_EVENT_NAME'),
-			"DESCRIPTION"   => Loc::getMessage('COLLECTED_CALLBACK_MODULE_INSTALL_EVENT_DESCR')
+			"NAME"          => Loc::getMessage('KIT_CALLBACK_MODULE_INSTALL_EVENT_NAME'),
+			"DESCRIPTION"   => Loc::getMessage('KIT_CALLBACK_MODULE_INSTALL_EVENT_DESCR')
 		);
 
 		$nEventId = CEventType::Add($arFields);
@@ -112,7 +112,7 @@ class collected_callback extends CModule
 					'LID' => $arSites,
 					'EMAIL_FROM' => '#DEFAULT_EMAIL_FROM#',
 					'EMAIL_TO' => '#EMAIL_TO#',
-					'SUBJECT' => Loc::getMessage('COLLECTED_CALLBACK_MODULE_INSTALL_EVENT_SUBJECT'),
+					'SUBJECT' => Loc::getMessage('KIT_CALLBACK_MODULE_INSTALL_EVENT_SUBJECT'),
 					'BODY_TYPE' => 'text',
 					'MESSAGE' => '#TEXT#',
 				);
@@ -121,7 +121,7 @@ class collected_callback extends CModule
 				$oMess = new CEventMessage;
 				$nMsgId = $oMess->Add($arFields);
 
-				COption::SetOptionInt($this->MODULE_ID,'COLLECTED_CALLBACK_MODULE_INSTALL_MSG_ID',$nMsgId,false,false);
+				COption::SetOptionInt($this->MODULE_ID,'KIT_CALLBACK_MODULE_INSTALL_MSG_ID',$nMsgId,false,false);
 
 			}
 		}
